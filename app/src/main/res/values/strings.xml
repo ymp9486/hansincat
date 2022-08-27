@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Hansimcat</string>
+
+    <!-- tab-->
+    <string name="tab_home">홈</string>
+    <string name="tab_search">검색</string>
+    <string name="tab_upload">업로드</string>
+    <string name="tab_heart">좋아요</string>
+    <string name="tab_mypage">마이페이지</string>
+
+    <!-- home-->
+    <string name="home_like_count_before">좋아요</string>
+    <string name="home_like_count_after">개</string>
+    
+    <!-- 검색-->
+    <string name="search_text">검색</string>
+    <string name="search_newly_keyword">최근 검색</string>
+
+    <!-- 업로드-->
+    <string name="upload_new_contents">새 게시물</string>
+    <string name="upload_hint_input">문구 입력_</string>
+    <string name="upload_tag">사람 태그하기</string>
+    <string name="upload_location">위치 추가</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

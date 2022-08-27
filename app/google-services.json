@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "955147228681",
+    "project_id": "hansincat-93260",
+    "storage_bucket": "hansincat-93260.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:955147228681:android:e0c9f07c69452e3cf38ad8",
+        "android_client_info": {
+          "package_name": "com.example.hansimcat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "955147228681-5pai9024r3lapsvqurvefjs6pafbitd1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hansimcat",
+            "certificate_hash": "ca314446586425de117394d9742d383f9fa00d45"
+          }
+        },
+        {
+          "client_id": "955147228681-pocjqenrh5ehgtepceudlsrcfgcr89fu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkPaYxpdNE5j4PHvlifBxK8zAKpLW9KPs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "955147228681-pocjqenrh5ehgtepceudlsrcfgcr89fu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
