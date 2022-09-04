@@ -49,7 +49,7 @@ class HomeFragment : Fragment() {
                 for (i: Int in 1 until (values?.size ?: 0)) {
                     val data = values?.get(i)
                     feedList.add(
-                        Feed(
+                        0, Feed(
                             data?.get("userId") as String,
                             data.get("imageUrl") as String,
                             data.get("profileImageUrl") as String,

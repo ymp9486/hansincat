@@ -71,7 +71,7 @@ RecyclerView.Adapter<FeedAdapter.ViewHolder>(){
                         }
                     }
 
-                    //갯글
+                    //댓글
                     binding.feedBtnComment.setOnClickListener {
                         Intent(context, CommentActivity::class.java).apply {
                         }.run { context.startActivity(this) }

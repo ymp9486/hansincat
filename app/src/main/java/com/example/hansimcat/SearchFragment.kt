@@ -61,7 +61,7 @@ class SearchFragment : Fragment() {
                     for (i: Int in 1 until (values?.size ?: 0)) {
                         val data = values?.get(i)
                         imageList.add(
-                            data?.get("imageUrl") as String
+                            0, data?.get("imageUrl") as String
                         )
                     }
                     binding.serchRvRecommend.adapter?.notifyDataSetChanged()

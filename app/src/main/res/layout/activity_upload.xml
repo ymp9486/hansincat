@@ -92,7 +92,7 @@
         android:id="@+id/upload_tv_location"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/upload_location"
+        android:text="위치 추가하기"
         android:textColor="@color/black"
         android:textSize="16sp"
         android:layout_margin="20dp"

@@ -9,6 +9,7 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
+import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
@@ -92,13 +93,10 @@ class UploadActivity : AppCompatActivity() {
                     database.child((values?.size?: 0 + 1).toString()).setValue(Feed("YM",
                         downloadUri.toString(), downloadUri.toString(),0,false,false))
                 }
+                Toast.makeText(this, "게시물 작성 완료", Toast.LENGTH_LONG).show()
                 finish()
-            } else {
-                // Handle failures
-                // ...
             }
         }
-
     }
 
     private fun checkPermissions(permissions: Array<String>): Boolean {
