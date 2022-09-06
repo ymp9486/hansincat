@@ -12,6 +12,7 @@ import android.provider.MediaStore
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.databinding.DataBindingUtil
 import com.bumptech.glide.Glide
 import com.example.hansimcat.databinding.ActivityUploadBinding
 import com.google.firebase.database.DatabaseReference
@@ -33,6 +34,7 @@ class UploadActivity : AppCompatActivity() {
     private var imagrUri: Uri? = null
     private var firebaseStorage: FirebaseStorage? = null
     private lateinit var database: DatabaseReference
+
 
     private var Permissions = arrayOf(
         Manifest.permission.CAMERA,
@@ -77,6 +79,7 @@ class UploadActivity : AppCompatActivity() {
     private fun upkoadImage() {
         val timestamp = SimpleDateFormat("yyyymmdd_HHmmss").format(Date())
         val imageFileName = "$timestamp.jpeg"
+        val content = binding.uploadEt.text.toString()
         val storageReference = firebaseStorage?.reference?.child(imageFileName)
         storageReference?.putFile(imagrUri!!)?.continueWithTask { task ->
             if (!task.isSuccessful) {
@@ -91,7 +94,7 @@ class UploadActivity : AppCompatActivity() {
                 database.get().addOnSuccessListener { it ->
                     var values = it.value as ArrayList<HashMap<String, Any>>?
                     database.child((values?.size?: 0 + 1).toString()).setValue(Feed("YM",
-                        downloadUri.toString(), downloadUri.toString(),0,false,false))
+                        downloadUri.toString(), downloadUri.toString(),0,false,false, content))
                 }
                 Toast.makeText(this, "게시물 작성 완료", Toast.LENGTH_LONG).show()
                 finish()

@@ -53,9 +53,10 @@ class HeartFragment : Fragment() {
 
                 for (dataModel in dataSnapshot.children) {
                     val item = dataModel.getValue(board::class.java)
-                    boardDataList.add(0, item!!)
+                    boardDataList.add(item!!)
 
                 }
+                boardDataList.reverse()
                 boardRVAdapter.notifyDataSetChanged()
             }
 

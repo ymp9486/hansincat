@@ -6,5 +6,6 @@ class Feed(
     val profileImageUrl: String,
     var likeCount: Long,
     var isLike: Boolean,
-    var isBookmark: Boolean
+    var isBookmark: Boolean,
+    var content: String
 )

@@ -33,6 +33,8 @@ RecyclerView.Adapter<FeedAdapter.ViewHolder>(){
                     binding.feedIvProfile.background = ShapeDrawable(OvalShape())
                     binding.feedIvProfile.clipToOutline = true
 
+                    binding.feedTvContent.text = item.content
+
                     var database : DatabaseReference
                     val db = Firebase.database
                     database = db.getReference("FeedList")

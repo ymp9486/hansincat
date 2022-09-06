@@ -45,6 +45,9 @@ class HomeFragment : Fragment() {
 
         database.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
+
+                feedList.clear()
+
                 val values = snapshot.value as ArrayList<HashMap<String, Any>>?
                 for (i: Int in 1 until (values?.size ?: 0)) {
                     val data = values?.get(i)
@@ -55,7 +58,8 @@ class HomeFragment : Fragment() {
                             data.get("profileImageUrl") as String,
                             data.get("likeCount") as Long,
                             false,
-                            false
+                            false,
+                            data.get("content") as String
                         )
                     )
                 }

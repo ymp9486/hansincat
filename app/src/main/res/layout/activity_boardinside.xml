@@ -17,6 +17,7 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:text="title"
+        android:textColor="@color/black"
         android:textSize="20sp"
         android:textStyle="bold" />
 
@@ -44,7 +45,7 @@
       android:layout_margin="20sp"
       android:textColor="@color/black"
       android:text="내용영역"
-      android:textSize="20dp"
+      android:textSize="15dp"
       android:padding="10dp"/>
 
 </LinearLayout>
