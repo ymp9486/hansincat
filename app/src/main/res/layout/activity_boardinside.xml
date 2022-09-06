@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".BoardinsideActivity">
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="60dp">
+
+    <TextView
+        android:id="@+id/titleArea3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="title"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+  </LinearLayout>
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="0.5dp"
+      android:background="@color/black">
+
+  </LinearLayout>
+
+  <TextView
+      android:id="@+id/timeArea2"
+      android:text="time"
+      android:layout_width="match_parent"
+      android:gravity="right"
+      android:layout_margin="10sp"
+      android:layout_height="wrap_content"/>
+
+  <TextView
+      android:id="@+id/textArea"
+      android:layout_width="match_parent"
+      android:layout_height="200dp"
+      android:layout_margin="20sp"
+      android:textColor="@color/black"
+      android:text="내용영역"
+      android:textSize="20dp"
+      android:padding="10dp"/>
+
+</LinearLayout>
+
+</layout>

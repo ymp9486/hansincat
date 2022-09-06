@@ -2,7 +2,6 @@ package com.example.hansimcat
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -20,8 +19,6 @@ class HeartFragment : Fragment() {
 
     private lateinit var boardRVAdapter : BoardListAdapter
 
-    private val TAG = HeartFragment::class.java.simpleName
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -32,14 +29,20 @@ class HeartFragment : Fragment() {
         boardRVAdapter = BoardListAdapter(boardDataList)
         binding.boardListView.adapter = boardRVAdapter
 
+        binding.boardListView.setOnItemClickListener { parent, view, positon, id ->
+            val intent = Intent(context, BoardinsideActivity::class.java)
+            intent.putExtra("title", boardDataList[positon].title)
+            intent.putExtra("content", boardDataList[positon].content)
+            intent.putExtra("time", boardDataList[positon].time)
+            startActivity(intent)
+        }
+
         getFBBoardData()
 
         binding.writeBtn.setOnClickListener {
             val intent = Intent(context, HeartWriteActivity::class.java)
             startActivity(intent)
-
         }
-
         return binding.root
     }
     private fun getFBBoardData() {
