@@ -16,6 +16,7 @@ class HeartFragment : Fragment() {
     private val binding get() = _binding!!
 
     private val boardDataList = mutableListOf<board>()
+    private val boardKeyList = mutableListOf<String>()
 
     private lateinit var boardRVAdapter : BoardListAdapter
 
@@ -30,10 +31,14 @@ class HeartFragment : Fragment() {
         binding.boardListView.adapter = boardRVAdapter
 
         binding.boardListView.setOnItemClickListener { parent, view, positon, id ->
+
+//            intent.putExtra("title", boardDataList[positon].title)
+//            intent.putExtra("content", boardDataList[positon].content)
+//            intent.putExtra("time", boardDataList[positon].time)
+//            startActivity(intent)
+
             val intent = Intent(context, BoardinsideActivity::class.java)
-            intent.putExtra("title", boardDataList[positon].title)
-            intent.putExtra("content", boardDataList[positon].content)
-            intent.putExtra("time", boardDataList[positon].time)
+            intent.putExtra("key", boardKeyList[positon])
             startActivity(intent)
         }
 
@@ -52,10 +57,13 @@ class HeartFragment : Fragment() {
                 boardDataList.clear()
 
                 for (dataModel in dataSnapshot.children) {
+//                    dataModel.key
                     val item = dataModel.getValue(board::class.java)
                     boardDataList.add(item!!)
+                    boardKeyList.add(dataModel.key.toString())
 
                 }
+                boardKeyList.reverse()
                 boardDataList.reverse()
                 boardRVAdapter.notifyDataSetChanged()
             }
