@@ -23,6 +23,8 @@ class HeartWriteActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHeartWriteBinding
 
+    private var isImageUpload = false
+
     private fun getTime(): String {
 
         val currentDataTime = Calendar.getInstance().time
@@ -47,14 +49,16 @@ class HeartWriteActivity : AppCompatActivity() {
 
             Toast.makeText(this, "게시물 작성 완료", Toast.LENGTH_LONG).show()
 
-            imageupload(key)
-
+            if (isImageUpload == true) {
+                imageupload(key)
+            }
             finish()
         }
 
         binding.imageArea.setOnClickListener {
             val gallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI)
             startActivityForResult(gallery,100)
+            isImageUpload = true
         }
 
     }
