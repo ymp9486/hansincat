@@ -9,7 +9,7 @@
         android:id="@+id/home_iv_logo"
         android:layout_width="180dp"
         android:layout_height="70dp"
-        android:src="@drawable/logo_hansincat"
+        android:src="@drawable/logo_hansincat2"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
 

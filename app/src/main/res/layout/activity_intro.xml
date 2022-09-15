@@ -13,16 +13,19 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:layout_width="500dp"
+            android:id="@+id/intro_lg"
+            android:layout_width="300dp"
             android:layout_height="160dp"
-            android:layout_margin="30dp"
-            android:src="@drawable/logo_hansincat" />
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="150dp"
+            android:layout_marginRight="50dp"
+            android:src="@drawable/logo_hansincat2" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:orientation="vertical"
             android:layout_alignParentBottom="true"
-            android:layout_margin="30dp"
+            android:layout_margin="50dp"
             android:layout_height="wrap_content">
 
             <Button
