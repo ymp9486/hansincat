@@ -9,6 +9,7 @@ import android.provider.MediaStore
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.example.hansimcat.databinding.ActivityHeartWriteBinding
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
@@ -21,6 +22,12 @@ val boardRef = database.getReference("board")
 
 class HeartWriteActivity : AppCompatActivity() {
 
+    private lateinit var auth: FirebaseAuth
+    fun getUid() :String{
+        auth = FirebaseAuth.getInstance()
+
+        return auth.currentUser?.uid.toString()
+    }
     private lateinit var binding: ActivityHeartWriteBinding
 
     private var isImageUpload = false
@@ -40,12 +47,13 @@ class HeartWriteActivity : AppCompatActivity() {
             val title = binding.titleArea.text.toString()
             val content = binding.contentsArea.text.toString()
             val time = getTime()
+            val uid = getUid()
 
             val key = boardRef.push().key.toString()
 
             boardRef
                 .child(key)
-                .setValue(board(title,content, "userId", time))
+                .setValue(board(title,content, uid, time))
 
             Toast.makeText(this, "게시물 작성 완료", Toast.LENGTH_LONG).show()
 
