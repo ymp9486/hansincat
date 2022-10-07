@@ -1,17 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="댓글창"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".CommentActivity"
+            android:orientation="horizontal">
+
+            <ListView
+                android:id="@+id/commentLV2"
+                android:layout_width="match_parent"
+                android:layout_height="665dp"/>
+
+        </LinearLayout>
+
+        </ScrollView>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_alignParentBottom="true"
+                android:background="@color/white"
+                android:layout_height="60dp"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/commentArea2"
+                    android:hint=" 댓글을 입력해주세요"
+                    android:layout_width="320dp"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@android:color/transparent"/>
+
+                <ImageView
+                    android:id="@+id/commentArea2_btn"
+                    android:src="@drawable/ic_ck"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

@@ -57,13 +57,19 @@ class SearchFragment : Fragment() {
         }else{
             database.addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
-                    val values = snapshot.value as ArrayList<HashMap<String, Any>>?
-                    for (i: Int in 1 until (values?.size ?: 0)) {
-                        val data = values?.get(i)
+
+                    for (data in snapshot.children){
                         imageList.add(
-                            data?.get("imageUrl") as String
+                                data.child("imageUrl").value as String
                         )
                     }
+//                    val values = snapshot.value as ArrayList<HashMap<String, Any>>?
+//                    for (i: Int in 1 until (values?.size ?: 0)) {
+//                        val data = values?.get(i)
+//                        imageList.add(
+//                            data?.get("imageUrl") as String
+//                        )
+//                    }
                     imageList.reverse()
                     binding.serchRvRecommend.adapter?.notifyDataSetChanged()
                 }

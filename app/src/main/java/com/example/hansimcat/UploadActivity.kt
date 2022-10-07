@@ -3,7 +3,6 @@ package com.example.hansimcat
 import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.content.pm.PathPermission
 import android.graphics.Bitmap
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -12,10 +11,10 @@ import android.provider.MediaStore
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import androidx.databinding.DataBindingUtil
 import com.bumptech.glide.Glide
 import com.example.hansimcat.databinding.ActivityUploadBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
@@ -40,9 +39,14 @@ class UploadActivity : AppCompatActivity() {
     fun getUid() :String{
         auth = FirebaseAuth.getInstance()
 
-        return auth.currentUser?.email.toString()
+        return auth.currentUser?.uid.toString()
     }
 
+    fun getUemail() :String{
+        auth = FirebaseAuth.getInstance()
+
+        return auth.currentUser?.email.toString()
+    }
 
     private var Permissions = arrayOf(
         Manifest.permission.CAMERA,
@@ -89,7 +93,8 @@ class UploadActivity : AppCompatActivity() {
         val imageFileName = "$timestamp.jpeg"
         val content = binding.uploadEt.text.toString()
         val storageReference = firebaseStorage?.reference?.child(imageFileName)
-        val email = getUid()
+        val uid2 = getUid()
+        val email = getUemail()
         storageReference?.putFile(imagrUri!!)?.continueWithTask { task ->
             if (!task.isSuccessful) {
                 task.exception?.let {
@@ -101,9 +106,11 @@ class UploadActivity : AppCompatActivity() {
             if (task.isSuccessful) {
                 val downloadUri = task.result
                 database.get().addOnSuccessListener { it ->
-                    var values = it.value as ArrayList<HashMap<String, Any>>?
-                    database.child((values?.size?: 0 + 1).toString()).setValue(Feed(email,
-                        downloadUri.toString(), downloadUri.toString(),0,false,false, content))
+//                    var values = it.value as ArrayList<HashMap<String, Any>>?
+                    database.push().setValue(Feed(
+                        email,
+                        downloadUri.toString(), downloadUri.toString(), 0, false, false, content, uid2
+                    ))
                 }
                 Toast.makeText(this, "게시물 작성 완료", Toast.LENGTH_LONG).show()
                 finish()

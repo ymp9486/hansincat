@@ -1,14 +1,19 @@
 package com.example.hansimcat
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
+import android.widget.Button
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import com.bumptech.glide.Glide
 import com.example.hansimcat.databinding.ActivityBoardinsideBinding
 import com.google.android.gms.tasks.OnCompleteListener
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
@@ -19,6 +24,13 @@ import java.util.*
 
 class BoardinsideActivity : AppCompatActivity() {
 
+    private lateinit var auth: FirebaseAuth
+    fun getUid() :String{
+        auth = FirebaseAuth.getInstance()
+
+        return auth.currentUser?.uid.toString()
+    }
+
     private val commentRef = database.getReference("comment")
 
     private val commentDataList = mutableListOf<CommentModel>()
@@ -28,6 +40,8 @@ class BoardinsideActivity : AppCompatActivity() {
     private val TAG = BoardinsideActivity::class.java.simpleName
 
     private lateinit var binding: ActivityBoardinsideBinding
+
+    private lateinit var key : String
 
     private fun getTime(): String {
 
@@ -40,6 +54,10 @@ class BoardinsideActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_boardinside)
 
+        binding.Boardsetting.setOnClickListener {
+            showDialog()
+        }
+
 //        val title = intent.getStringExtra("title").toString()
 //        val content = intent.getStringExtra("content").toString()
 //        val time = intent.getStringExtra("time").toString()
@@ -48,9 +66,9 @@ class BoardinsideActivity : AppCompatActivity() {
 //        binding.textArea.text = content
 //        binding.timeArea2.text = time
 
-        val key = intent.getStringExtra("key")
-        getBoardData(key.toString())
-        getImageData(key.toString())
+        key = intent.getStringExtra("key").toString()
+        getBoardData(key)
+        getImageData(key)
 
         binding.commentArea1Btn.setOnClickListener {
             insertComment(key!!)
@@ -79,7 +97,6 @@ class BoardinsideActivity : AppCompatActivity() {
             }
         }
         commentRef.child(key).addValueEventListener(postListener)
-
     }
 
     fun insertComment(key : String){
@@ -92,6 +109,27 @@ class BoardinsideActivity : AppCompatActivity() {
             )
         Toast.makeText(this, "댓글 입력 완료", Toast.LENGTH_LONG)
         binding.commentArea1.setText("")
+    }
+
+    private  fun showDialog(){
+       val mDialogView = LayoutInflater.from(this).inflate(R.layout.custom_dialog, null)
+        val mBulder = AlertDialog.Builder(this)
+            .setView(mDialogView)
+            .setTitle("게시물 수정/삭제")
+
+        val alertDialog = mBulder.show()
+        alertDialog.findViewById<Button>(R.id.editBtn)?.setOnClickListener {
+            Toast.makeText(this, "수정버튼을 눌렀습니다.", Toast.LENGTH_LONG).show()
+
+            val intent = Intent(this, BoardEditActivity::class.java)
+            intent.putExtra("key", key)
+            startActivity(intent)
+        }
+        alertDialog.findViewById<Button>(R.id.deletBtn)?.setOnClickListener {
+            boardRef.child(key).removeValue()
+            Toast.makeText(this, "삭제완료", Toast.LENGTH_LONG).show()
+            finish()
+        }
     }
 
     private fun getImageData(key : String){
@@ -118,10 +156,26 @@ class BoardinsideActivity : AppCompatActivity() {
         val postListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
 
-                val dataModel = dataSnapshot.getValue(board::class.java)
-                binding.titleArea3.text = dataModel!!.title
-                binding.textArea.text = dataModel!!.content
-                binding.timeArea2.text = dataModel!!.time
+                try {
+
+                    val dataModel = dataSnapshot.getValue(board::class.java)
+                    Log.d(TAG, dataModel!!.title)
+                    binding.titleArea3.text = dataModel!!.title
+                    binding.textArea.text = dataModel!!.content
+                    binding.timeArea2.text = dataModel!!.time
+                    val myUid = getUid()
+                    val writteruid = dataModel.userId
+
+                    if(myUid.equals(writteruid)){
+                        binding.Boardsetting.isVisible = true
+                    }else{
+
+                    }
+
+                }catch (e : Exception){
+                    Log.d(TAG, "삭제완료")
+                }
+
             }
 
             override fun onCancelled(databaseError: DatabaseError) {
