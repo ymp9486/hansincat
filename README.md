@@ -15,6 +15,7 @@
 マイページ実装
 
 イントロ画面
+
 ![KakaoTalk_20220930_135707174](https://user-images.githubusercontent.com/79002803/193193508-699a5b04-8617-4803-b79f-45c4987d5cf6.jpg)
 ![KakaoTalk_20220930_135707174_01](https://user-images.githubusercontent.com/79002803/193193513-e135c815-b110-47c9-b461-b9362096aa71.jpg)
 ![KakaoTalk_20220930_135707174_02](https://user-images.githubusercontent.com/79002803/193193515-3e618eed-1fc2-49e5-9cdf-e9c32f29ad02.jpg)
