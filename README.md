@@ -14,6 +14,8 @@
 写真掲示物検索機能
 マイページ実装
 
+
+
 イントロ画面
 
 ![KakaoTalk_20220930_135707174](https://user-images.githubusercontent.com/79002803/193193508-699a5b04-8617-4803-b79f-45c4987d5cf6.jpg)
