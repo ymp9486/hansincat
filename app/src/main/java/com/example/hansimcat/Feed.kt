@@ -8,5 +8,6 @@ data class Feed(
     var isLike: Boolean,
     var isBookmark: Boolean,
     var content: String,
+    var tag: String,
     val uid2: String
 )

@@ -92,9 +92,11 @@ class UploadActivity : AppCompatActivity() {
         val timestamp = SimpleDateFormat("yyyymmdd_HHmmss").format(Date())
         val imageFileName = "$timestamp.jpeg"
         val content = binding.uploadEt.text.toString()
+        val tag = binding.uploadTvTag.text.toString()
         val storageReference = firebaseStorage?.reference?.child(imageFileName)
         val uid2 = getUid()
         val email = getUemail()
+
         storageReference?.putFile(imagrUri!!)?.continueWithTask { task ->
             if (!task.isSuccessful) {
                 task.exception?.let {
@@ -108,8 +110,8 @@ class UploadActivity : AppCompatActivity() {
                 database.get().addOnSuccessListener { it ->
 //                    var values = it.value as ArrayList<HashMap<String, Any>>?
                     database.push().setValue(Feed(
-                        email,
-                        downloadUri.toString(), downloadUri.toString(), 0, false, false, content, uid2
+                        "익명",
+                        downloadUri.toString(), "", 0, false, false, content, tag, uid2
                     ))
                 }
                 Toast.makeText(this, "게시물 작성 완료", Toast.LENGTH_LONG).show()

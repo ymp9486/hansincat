@@ -6,13 +6,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.view.isVisible
 import com.example.hansimcat.databinding.FragmentMainBinding
 import com.example.hansimcat.databinding.FragmentMypageBinding
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.ktx.Firebase
 
 class MyPageFragment : Fragment() {
     private var _binding: FragmentMypageBinding? = null
@@ -42,8 +45,23 @@ class MyPageFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        auth = Firebase.auth
+
         _binding = FragmentMypageBinding.inflate(inflater, container, false)
         binding.myEmailTv.setText(getUemail())
+
+        binding.myLogout.setOnClickListener {
+            auth.signOut()
+            val intent = Intent(context, IntroActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.myLogout2.setOnClickListener {
+            auth.currentUser?.delete()
+            val intent = Intent(context, IntroActivity::class.java)
+            startActivity(intent)
+        }
 
         boardRVAdapter = BoardListAdapter(boardDataList)
         binding.boardListView2.adapter = boardRVAdapter
@@ -54,7 +72,6 @@ class MyPageFragment : Fragment() {
             intent.putExtra("key", boardKeyList[positon])
             startActivity(intent)
         }
-
         getFBBoardData()
         return binding.root
     }

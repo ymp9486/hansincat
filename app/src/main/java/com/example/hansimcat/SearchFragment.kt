@@ -40,7 +40,7 @@ class SearchFragment : Fragment() {
 
         if (arguments?.getString("keyword")!=null){
 //            검색
-            val values =database.orderByChild("userId").equalTo(arguments?.getString("keyword"))
+            val values = database.orderByChild("tag").equalTo(arguments?.getString("keyword"))
             values.addValueEventListener(object :ValueEventListener{
                 override fun onDataChange(snapshot: DataSnapshot) {
                     for (data in snapshot.children) {

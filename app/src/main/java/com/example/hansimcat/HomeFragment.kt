@@ -69,6 +69,7 @@ class HomeFragment : Fragment() {
                             false,
                             false,
                             data.child("content").value as String,
+                            data.child("tag").value as String,
                             data.child("uid2").value as String
                         )
                     )

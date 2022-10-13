@@ -20,7 +20,7 @@ class KeywordAdapter (private val context: SearchActivity, private val dataList:
 
                 val gson = Gson()
                 val json = gson.toJson(dataList)
-                val prefs = context.getSharedPreferences("YM", Context.MODE_PRIVATE)
+                val prefs = context.getSharedPreferences("한타", Context.MODE_PRIVATE)
                 val editor = prefs.edit()
                 editor.putString("keywords", json)
                 editor.apply()

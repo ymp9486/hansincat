@@ -27,13 +27,14 @@ RecyclerView.Adapter<FeedAdapter.ViewHolder>(){
                         .append(context.resources.getString(R.string.home_like_count_after))
                     binding.feedTvLikeCount.text = likeCount
 
-                    Glide.with(context).load(item.profileImageUrl).into(binding.feedIvProfile)
+//                    Glide.with(context).load(item.profileImageUrl).into(binding.feedIvProfile)
                     Glide.with(context).load(item.imageUrl).into(binding.feedIvImage)
 
                     binding.feedIvProfile.background = ShapeDrawable(OvalShape())
                     binding.feedIvProfile.clipToOutline = true
 
                     binding.feedTvContent.text = item.content
+                    binding.feedTvTag.text = item.tag
 
                     var database : DatabaseReference
                     val db = Firebase.database
@@ -45,12 +46,12 @@ RecyclerView.Adapter<FeedAdapter.ViewHolder>(){
                             binding.feedBtnHeart.setImageResource(R.drawable.ic_heart_off)
                             item.isLike = false
                             item.likeCount = item.likeCount - 1
-                            database.child((position+1).toString()).child("likeCount").setValue(item.likeCount)
+//                            database.child((position+1).toString()).child("likeCount").setValue(item.likeCount)
                         }else {
                             binding.feedBtnHeart.setImageResource(R.drawable.ic_heart_on)
                             item.isLike = true
                             item.likeCount = item.likeCount + 1
-                            database.child((position+1).toString()).child("likeCount").setValue(item.likeCount)
+//                            database.child((position+1).toString()).child("likeCount").setValue(item.likeCount)
 
                         }
                         likeCount = StringBuilder()
