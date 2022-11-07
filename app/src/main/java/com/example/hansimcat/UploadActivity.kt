@@ -27,6 +27,8 @@ import kotlin.collections.HashMap
 
 class UploadActivity : AppCompatActivity() {
 
+    private lateinit var commentAdepter : CommentLVAdapter
+
     private lateinit var binding: ActivityUploadBinding
     private val PICK_STORAGE = 1001
     private var PICK_CAMERA = 1000
@@ -34,6 +36,8 @@ class UploadActivity : AppCompatActivity() {
     private var imagrUri: Uri? = null
     private var firebaseStorage: FirebaseStorage? = null
     private lateinit var database: DatabaseReference
+    private lateinit var key : String
+    private val feeddKeyList = mutableListOf<String>()
 
     private lateinit var auth: FirebaseAuth
     fun getUid() :String{
@@ -64,6 +68,8 @@ class UploadActivity : AppCompatActivity() {
         val db = Firebase.database
         database = db.getReference("FeedList")
 
+        key = intent.getStringExtra("key").toString()
+
         pickImage()
         checkPermissions(Permissions)
 
@@ -78,6 +84,7 @@ class UploadActivity : AppCompatActivity() {
         }
         binding.uploadBtnComplete.setOnClickListener {
             upkoadImage()
+//            keyget()
         }
     }
 
@@ -88,6 +95,10 @@ class UploadActivity : AppCompatActivity() {
         startActivityForResult(intent, PICK_STORAGE)
     }
 
+//    private fun keyget(){
+//        Toast.makeText(this,key,Toast.LENGTH_LONG).show()
+//    }
+
     private fun upkoadImage() {
         val timestamp = SimpleDateFormat("yyyymmdd_HHmmss").format(Date())
         val imageFileName = "$timestamp.jpeg"
@@ -96,7 +107,6 @@ class UploadActivity : AppCompatActivity() {
         val storageReference = firebaseStorage?.reference?.child(imageFileName)
         val uid2 = getUid()
         val email = getUemail()
-
         storageReference?.putFile(imagrUri!!)?.continueWithTask { task ->
             if (!task.isSuccessful) {
                 task.exception?.let {
@@ -113,7 +123,9 @@ class UploadActivity : AppCompatActivity() {
                         "익명",
                         downloadUri.toString(), "", 0, false, false, content, tag, uid2
                     ))
+                    feeddKeyList.add(database.key.toString())
                 }
+                feeddKeyList.reverse()
                 Toast.makeText(this, "게시물 작성 완료", Toast.LENGTH_LONG).show()
                 finish()
             }

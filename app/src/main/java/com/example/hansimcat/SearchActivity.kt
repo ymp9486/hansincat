@@ -53,7 +53,6 @@ class SearchActivity : AppCompatActivity() {
         val prefs = getSharedPreferences("YM", Context.MODE_PRIVATE)
         val json = prefs.getString(Key, "[]")
         val gson = Gson()
-
         return gson.fromJson(
             json,
             object : TypeToken<ArrayList<String?>>() {}.type

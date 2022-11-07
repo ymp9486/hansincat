@@ -16,6 +16,9 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     private lateinit var database: DatabaseReference
+    private lateinit var feedAdapter: FeedAdapter
+
+    var feedList = ArrayList<Feed>()
 
     private val feedKeyList = mutableListOf<String>()
 
@@ -23,11 +26,22 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
+
+        feedAdapter = FeedAdapter(MainActivity(), feedList)
+        binding.homeRvFeed.adapter = feedAdapter
+
         return binding.root
 
     }
+
+//    override fun onBindViewHolder(holder: FeedAdapter.ViewHolder, position: Int){
+//
+//        holder.bind(requireContext(), feedList[position], position)
+//
+//
+//    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -39,8 +53,7 @@ class HomeFragment : Fragment() {
     override fun onStart() {
         super.onStart()
 
-        var feedList = ArrayList<Feed>()
-        var feedList2 = ArrayList<Feed>()
+//        var feedList2 = ArrayList<Feed>()
 
         binding.homeRvFeed.layoutManager =
             LinearLayoutManager(activity, LinearLayoutManager.VERTICAL,false)

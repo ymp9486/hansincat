@@ -66,12 +66,12 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-//        findViewById<Button>(R.id.logout_btn).setOnClickListener {
+        findViewById<Button>(R.id.logout_btn).setOnClickListener {
 //            auth.signOut()
-//            val intent = Intent(this,IntroActivity::class.java)
-//
+            val intent = Intent(this,MainActivity2::class.java)
+
 //            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
-//            startActivity(intent)
-//        }
+            startActivity(intent)
+        }
     }
 }

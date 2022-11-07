@@ -21,7 +21,8 @@
         <entry key="..\:/Users/admin/AndroidStudioProjects/Hansimcat/app/src/main/res/layout/activity_intro.xml" value="0.2" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/Hansimcat/app/src/main/res/layout/activity_join.xml" value="0.20202020202020202" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/Hansimcat/app/src/main/res/layout/activity_login.xml" value="0.152" />
-        <entry key="..\:/Users/admin/AndroidStudioProjects/Hansimcat/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/Hansimcat/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/Hansimcat/app/src/main/res/layout/activity_main2.xml" value="0.24947916666666667" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/Hansimcat/app/src/main/res/layout/activity_search.xml" value="0.176" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/Hansimcat/app/src/main/res/layout/activity_splash.xml" value="0.176" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/Hansimcat/app/src/main/res/layout/activity_splash2.xml" value="0.2" />
@@ -37,9 +38,11 @@
         <entry key="..\:/Users/admin/AndroidStudioProjects/Hansimcat/app/src/main/res/layout/fragment_mypage.xml" value="0.2" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/Hansimcat/app/src/main/res/layout/fragment_search.xml" value="0.22" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/Hansimcat/app/src/main/res/layout/fragment_upload.xml" value="0.17708333333333334" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/Hansimcat/app/src/main/res/layout/gallerypick.xml" value="0.24947916666666667" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/Hansimcat/app/src/main/res/layout/item_home_feed.xml" value="0.4" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/Hansimcat/app/src/main/res/layout/item_search_keyword.xml" value="0.264" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/Hansimcat/app/src/main/res/layout/item_sserch_recommend.xml" value="0.2" />
+        <entry key="..\:/Users/admin/AndroidStudioProjects/Hansimcat/app/src/main/res/layout/pick.xml" value="0.2484375" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/Hansimcat/app/src/main/res/menu/bottom_nav_menu.xml" value="0.4" />
         <entry key="..\:/Users/admin/AndroidStudioProjects/Hansimcat/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
       </map>

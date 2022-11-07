@@ -15,7 +15,7 @@ import com.google.firebase.ktx.Firebase
 import java.lang.StringBuilder
 
 class FeedAdapter(private val context: MainActivity, private val  dataList: ArrayList<Feed>) :
-RecyclerView.Adapter<FeedAdapter.ViewHolder>(){
+    RecyclerView.Adapter<FeedAdapter.ViewHolder>(){
 
     class ViewHolder(private val binding: ItemHomeFeedBinding) :
             RecyclerView.ViewHolder(binding.root) {
@@ -73,7 +73,6 @@ RecyclerView.Adapter<FeedAdapter.ViewHolder>(){
                             item.likeCount = item.likeCount +1
                         }
                     }
-
                     //댓글
                     binding.feedBtnComment.setOnClickListener {
                         Intent(context, CommentActivity::class.java).apply {
