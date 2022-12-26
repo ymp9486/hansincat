@@ -46,4 +46,6 @@
 ![KakaoTalk_20221226_164843192](https://user-images.githubusercontent.com/79002803/209520774-6ad2e1f2-342e-4e68-a5cb-a332a3ab6147.png)
 
 イメージ分析機能
+![KakaoTalk_20221226_164754960](https://user-images.githubusercontent.com/79002803/209521169-605d96ef-609d-461f-9263-639d4deede31.jpg)
+![KakaoTalk_20221226_164754960_01](https://user-images.githubusercontent.com/79002803/209521177-55ab98ce-7be7-4505-8eeb-706e180c5459.jpg)
 
