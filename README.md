@@ -44,4 +44,5 @@
 
 マイページ画面
 
-![KakaoTalk_20221010_153147995](https://user-images.githubusercontent.com/79002803/194809362-88c73ada-8c8e-4905-a891-dcacf8dee9cc.png)
+![KakaoTalk_20221226_164843192](https://user-images.githubusercontent.com/79002803/209520774-6ad2e1f2-342e-4e68-a5cb-a332a3ab6147.png)
+
